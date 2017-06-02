@@ -48,16 +48,18 @@ String.prototype.hexDecode = function(){
 }
 
 var _matches = function(rawPassword, encodedPassword){
-    var digested = _decode(encodedPassword);
-    var salt = subArray(digested, 0, 8);
-    return digested === _digest(rawPassword, salt);
+    var digested = hexToBytes(encodedPassword);
+    var salt = digested.slice(0, 8);
+    var encodedRaw = _encode(rawPassword, bytesToHex(salt));
+    var saltedEncodedRaw = bytesToHex(salt.concat(hexToBytes(encodedRaw)));
+    return encodedPassword === saltedEncodedRaw;
 }
 
 var _digest = function(value){
     console.log("JS about to digest this: "+ value);
 
     for(var i = 0; i < constants.PW_ITERATIONS; i++){
-        value = crypto.createHash(constants.PW_ALG).update(value).digest("hex");
+        value = crypto.createHash(constants.PW_ALG).update(Buffer.from(value, "hex")).digest("hex");
         console.log("JS Digest: "+ value + " iteration:" + (i+1));
     }
     return value;
