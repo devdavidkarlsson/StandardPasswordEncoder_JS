@@ -7,10 +7,6 @@ console.log("###########🔰 JS Implementation started... ###########")
 
 
 var constants = {
-    role_user : {BACK_OFFICE : "OWNER", KODI_MANAGER : "KODI_MANAGER"},
-    role_client_type : {CONTENT_CONTROLLERS_PANEL :"ROLE_CLIENT_CONTENT_CONTROLLERS_PANEL"},
-    API_VERSION: 3,
-    TRUSTED_SERVER_URL : "http://localhost:8888/",
     PW_SECRET: "***REMOVED***",
     PW_ITERATIONS: 1,
     PW_ALG: "sha256",
@@ -120,7 +116,7 @@ var salt = args[1];
 constants.PW_ITERATIONS = args[2];
 var digestedInJava = args[3];
 
-console.log("\n JS: will encode password: "+ password + " with salt: "+ salt + " and secret: " + constants.PW_SECRET);
+console.log("\n🔐 JS: will encode password: "+ password + " with salt: "+ salt + " and secret: " + constants.PW_SECRET);
 var digestedInJS = _encode(password, salt);
 console.log("\n JS: digested the password to the following hash: " + digestedInJS);
 
