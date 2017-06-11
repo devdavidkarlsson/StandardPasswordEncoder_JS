@@ -16,7 +16,7 @@ public class Main {
         System.out.println("\n\n###########🔰 Java Implementation started... ###########");
 
         String password = "abc123";
-        PasswordEncoder passwordEncoder = new HackedStandardPasswordEncoder("***REMOVED***");
+        PasswordEncoder passwordEncoder = new HackedStandardPasswordEncoder("eRp8tqtnWCbQ9t9NgTOB");
         String encodedPassword = passwordEncoder.encode(password);
         String salt = encodedPassword.substring(0,16);
         System.out.println("\n Java: digested the password to the following hash: " + encodedPassword.substring(16));

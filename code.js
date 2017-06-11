@@ -7,7 +7,7 @@ console.log("###########🔰 JS Implementation started... ###########")
 
 
 var constants = {
-    PW_SECRET: "***REMOVED***",
+    PW_SECRET: "eRp8tqtnWCbQ9t9NgTOB",
     PW_ITERATIONS: 1,
     PW_ALG: "sha256",
     PW_HASH_LEN: 40
