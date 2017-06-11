@@ -12,14 +12,15 @@ import java.io.BufferedReader;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("HELLO THIS IS A PROGRAM FOR VERIFYING HASHES");
+        System.out.println("THIS IS A PROGRAM FOR VERIFYING HASHES");
+        System.out.println("\n\n###########🔰 Java Implementation started... ###########");
 
         String password = "abc123";
         PasswordEncoder passwordEncoder = new HackedStandardPasswordEncoder("***REMOVED***");
         String encodedPassword = passwordEncoder.encode(password);
         String salt = encodedPassword.substring(0,16);
-        System.out.println("Salt generated was: "+salt);
-        System.out.println("encodedPassword: "+ encodedPassword.substring(16));
+        System.out.println("\n Java: digested the password to the following hash: " + encodedPassword.substring(16));
+
         runNode(salt, password, 1, encodedPassword.substring(16));
 
 
@@ -42,14 +43,14 @@ public class Main {
                     InputStreamReader(proc.getErrorStream()));
 
 // read the output from the command
-            System.out.println("Here is the standard output of the command:\n");
+            System.out.println("\n\nWill now attempt the same digestion with NODE JS:\n");
             String s = null;
             while ((s = stdInput.readLine()) != null) {
                 System.out.println(s);
             }
 
 // read any errors from the attempted command
-            System.out.println("Here is the standard error of the command (if any):\n");
+            //System.out.println("Here is the standard error of the JS-command (if any):\n");
             while ((s = stdError.readLine()) != null) {
                 System.out.println(s);
             }

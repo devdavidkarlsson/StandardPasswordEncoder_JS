@@ -2,7 +2,7 @@
  * Created by daka on 09/08/16.
  */
 var crypto = require('crypto');
-
+console.log("###########🔰 JS Implementation started... ###########")
 
 
 
@@ -83,17 +83,17 @@ var _encode = function(rawPassword, salt) {
 
     var concatenatedSaltSecretPassword = saltBytes.concat(secretBytes, passwordBytes);
 
-    console.log("VALUE concatenated::::" + concatenatedSaltSecretPassword);
+    console.log("VALUE concatenated:" + concatenatedSaltSecretPassword);
 
 
     //Attempt to digest hex representation:
     var digest1 = _digest(bytesToHex(concatenatedSaltSecretPassword));
 
     //Attempt to digest string representation:
-    var digest2 = _digest(salt+constants.PW_SECRET+rawPassword);
+    //var digest2 = _digest(salt+constants.PW_SECRET+rawPassword);
 
     //Attempt to digest bytes string:
-    var digest3 = _digest(concatenatedSaltSecretPassword.join(""));
+    //var digest3 = _digest(concatenatedSaltSecretPassword.join(""));
 
     return digest1
 }
@@ -120,11 +120,14 @@ var salt = args[1];
 constants.PW_ITERATIONS = args[2];
 var digestedInJava = args[3];
 
-console.log("JS: will encode password: "+ password + " with salt: "+ salt + " and secret: " + constants.PW_SECRET);
-var digestedInJS = _encode(password, salt)
+console.log("\n JS: will encode password: "+ password + " with salt: "+ salt + " and secret: " + constants.PW_SECRET);
+var digestedInJS = _encode(password, salt);
+console.log("\n JS: digested the password to the following hash: " + digestedInJS);
+
 if( digestedInJava ===  digestedInJS ){
-    console.log("SUCCESS!");
+    console.log("\n✅ SUCCESS! The JS implementation yielded the same result as the Java implementation did...\n\n");
 }else{
     console.log(digestedInJava + "\nand\n"+ digestedInJS + "\n did not match sorry :(");
 }
+console.log("###########🔰 JS Implementation completed... ###########")
 

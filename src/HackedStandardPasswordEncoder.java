@@ -55,6 +55,7 @@ public class HackedStandardPasswordEncoder implements PasswordEncoder {
     }
 
     private byte[] digest(CharSequence rawPassword, byte[] salt) {
+        System.out.println("\n\n ☕ StandardPasswordEncoder:");
         System.out.println( "Hex salt: "+ new String(Hex.encode(salt)));
         System.out.println( "Hex password: "+ new String(Hex.encode(Utf8.encode(rawPassword))));
         System.out.println( "Hex secret: "+ new String(Hex.encode(this.secret)));

@@ -20,7 +20,7 @@ final class HackedDigester {
     }
 
     public byte[] digest(byte[] value) {
-        System.out.println("JAVA about to digest this: "+ new String (Hex.encode(value)));
+        System.out.println("\n\n ☕ Digester: about to digest: "+ new String (Hex.encode(value)));
         MessageDigest var2 = this.messageDigest;
         synchronized(this.messageDigest) {
             for(int i = 0; i < this.iterations; ++i) {
